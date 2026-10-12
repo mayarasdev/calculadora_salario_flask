@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora CLT | Salário Líquido</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="calculator">
+            <header class="header">
+                <span class="tag">CALCULADORA CLT</span>
+
+                <h1>
+                    Calculadora de<br>
+                    <span>Salário Líquido</span>
+                </h1>
+
+                <p>
+                    Simule seu salário e visualize uma estimativa
+                    dos descontos mensais.
+                </p>
+            </header>
+
+            <form action="{{ url_for('resultado') }}" method="post">
+                <div class="input-group">
+                    <label for="salario">Salário bruto mensal</label>
+
+                    <div class="input-wrapper">
+                        <span>R$</span>
+                        <input
+                            type="text"
+                            id="salario"
+                            name="salario"
+                            inputmode="decimal"
+                            placeholder="3.000,00"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="dependentes">
+                        Número de dependentes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="dependentes"
+                        name="dependentes"
+                        min="0"
+                        step="1"
+                        value="0"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Calcular salário <span>→</span>
+                </button>
+            </form>
+
+            <footer class="author-footer">
+             <strong>Desenvolvido por Mayara Santos de Souza</strong>
+             <span>Projeto independente · Outubro de 2026</span>
+             <span>Feito com Python e Flask </span>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resultado | Calculadora CLT</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="calculator">
+            <header class="header">
+                <span class="tag">RESULTADO DA SIMULAÇÃO</span>
+
+                <h1>
+                    Seu salário<br>
+                    <span>estimado</span>
+                </h1>
+
+                <p>
+                    Confira os valores considerados no cálculo.
+                </p>
+            </header>
+
+            <section class="result-card">
+                <p>Salário líquido estimado</p>
+                <h2>
+                    R$ {{ "%.2f"|format(salario_liquido) }}
+                </h2>
+            </section>
+
+            <section class="details">
+                <h2>Resumo dos valores</h2>
+
+                <div class="result-row">
+                    <span>Salário bruto</span>
+                    <strong>
+                        R$ {{ "%.2f"|format(salario) }}
+                    </strong>
+                </div>
+
+                <div class="result-row">
+                    <span>INSS estimado ({{ percentual_inss }}%)</span>
+                    <strong class="deduction">
+                        − R$ {{ "%.2f"|format(inss) }}
+                    </strong>
+                </div>
+
+                <div class="result-row">
+                    <span>
+                        Vale-transporte estimado ({{ percentual_vt }}%)
+                    </span>
+                    <strong class="deduction">
+                        − R$ {{ "%.2f"|format(vale_transporte) }}
+                    </strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Quantidade de dependentes</span>
+                    <strong>{{ dependentes }}</strong>
+                </div>
+
+                <div class="result-row">
+                    <span>
+                        Valor por dependente
+                    </span>
+                    <strong>
+                        R$ {{ "%.2f"|format(valor_por_dependente) }}
+                    </strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Adicional configurado por dependentes</span>
+                    <strong class="addition">
+                        + R$ {{ "%.2f"|format(valor_dependentes) }}
+                    </strong>
+                </div>
+            </section>
+
+            <p class="section-description">
+                Esta calculadora utiliza parâmetros simplificados
+                para fins educativos. O resultado não representa
+                uma folha de pagamento oficial. Os descontos reais
+                de INSS e vale-transporte podem ser diferentes.
+                O valor configurado por dependente também não
+                representa automaticamente a dedução legal do IRRF.
+            </p>
+
+            <a class="back-link" href="{{ url_for('index') }}">
+                ← Voltar à calculadora
+            </a>
+
+            <footer class="author-footer">
+            <strong>Desenvolvido por Mayara Santos de Souza</strong>
+            <span>Projeto independente · Outubro de 2026</span>
+            <span>Feito com Python e Flask </span>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
